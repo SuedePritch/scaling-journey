@@ -1,9 +1,8 @@
 const inquirer = require('inquirer')
-const Employee = require('./src/Employee')
 const Manager = require('./src/Manager')
 const Engineer = require('./src/Engineer')
 const Intern = require('./src/Intern')
-
+const employeeArray = require('./src/generateHTML')
 
 createManager = () => {
     inquirer
@@ -15,13 +14,13 @@ createManager = () => {
     },
     {
         type: "input",
-        name: 'managerId',
-        message: 'Enter: Manager\'s Employee Number'
+        name: 'managerEmail',
+        message: 'Enter Manager\'s Email'
     },
     {
         type: "input",
-        name: 'managerEmail',
-        message: 'Enter Manager\'s Email'
+        name: 'managerId',
+        message: 'Enter: Manager\'s Employee Number'
     },
     {
         type: "input",
@@ -35,8 +34,12 @@ createManager = () => {
 
     }
     ]).then(answers =>{
+        let manager = new Manager(answers.managerName,  answers.managerEmail, answers.managerId, answers.managerOffice)
+        employeeArray.push(manager)
         if(answers.addMore){
             addMore()
+        }else{
+            console.log(employeeArray);
 }
 }
 )}
@@ -89,8 +92,13 @@ createEngineer = () =>{
     
         }
         ]).then(answers =>{
+            let engineer = new Engineer(answers.engineerName, answers.engineerEmail, answers.engineerId,  answers.engineerGithub)
+            employeeArray.push(engineer)
+            
             if(answers.addMore){
                 addMore()
+            }else{
+                console.log(employeeArray);
     }
     })
 }
@@ -114,8 +122,8 @@ createIntern = () =>{
         },
         {
             type:"input",
-            name:"internGithub",
-            message: "Enter: Intern Github"
+            name:"internSchool",
+            message: "Enter: Intern School"
         },
         {
             type:"confirm",
@@ -124,9 +132,13 @@ createIntern = () =>{
     
         }
         ]).then(answers =>{
+            let intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool)
+            employeeArray.push(intern)
             if(answers.addMore){
                 addMore()
-    }
+            }else{
+                console.log(employeeArray);
+            }
     })
 }
 
