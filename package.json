@@ -1,0 +1,22 @@
+{
+  "name": "week-5--project",
+  "version": "1.0.0",
+  "description": "employee contact tracker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SuedePritch/scaling-journey.git"
+  },
+  "author": "James Pritchard",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SuedePritch/scaling-journey/issues"
+  },
+  "homepage": "https://github.com/SuedePritch/scaling-journey#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  }
+}
