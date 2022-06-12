@@ -1,8 +1,13 @@
 :root{
-    --clr-primary-500:hsl(50, 55%, 97%);
-    --clr-accent-500:hsl(300,10%,5%);
-    --clr-accent-300:hsl(300,20%,10%);
-
+    --clr-primary-300:hsl(174, 100%, 40%);
+    --clr-primary-500:hsl(163, 70%, 50%);
+    --clr-primary-700:hsl(158, 100%, 75%);
+    
+    --clr-accent-500:hsl(194, 85%, 9%);
+    --clr-accent-300:hsl(212, 84%, 11%);
+    --font-bebasNeue: 'Bebas Neue', cursive;;
+    --font-sourceCodePro: 'Source Code Pro', monospace;
+    --font-shareTechMono:'Share Tech Mono', monospace;
 }
 *,
 *::after,
@@ -13,11 +18,11 @@
 }
 html{
     background-color: var(--clr-accent-300);
-    color:var(--clr-primary-500)
+    color: var(--clr-accent-500);
 }
 a{
     text-decoration: underline;
-    color: var(--clr-primary-500);
+    font-family: var(--font-shareTechMono);
 }
 #heading-title{
     display: flex;
@@ -26,19 +31,72 @@ a{
     height: 15vh;
     background: var(--clr-accent-500);
     color: var(--clr-primary-500);
+    font-size: clamp(1em, 6vw, 4.25em);
+    font-family: var(--font-bebasNeue);
 }
 main{
+    margin: 1rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap:1rem;
+    gap:20px;
 }
 .card{
-    margin:1rem;
     padding:2rem;
 
     grid-column: span 1;
-    border-radius: 25px;
-    background-color: var(--clr-accent-500);
-
+    /* border-radius: 10px; */
+    font-family: var(--font-sourceCodePro);
     line-height: 2.5em;
+}
+#manager-card{
+    background-color: var(--clr-primary-300);
+    
+}
+#engineer-card{
+    background-color: var(--clr-primary-500);
+    
+}
+#intern-card{
+    background-color: var(--clr-primary-700);
+
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    main{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    main{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 728px) {
+    main{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    main{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1600px) {
+    main{
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 2400px) {
+    main{
+        grid-template-columns: repeat(5, 1fr);
+    }
 }
