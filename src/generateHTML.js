@@ -9,15 +9,18 @@ const htmlHeader = `
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
-    <title>Team Contacts</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Team Roster</title>
 </head>
+<header>
+    <h1 id='heading-title'>Team Roster</h1>
+</header>
 <body>
     <main>
 `
 
 const htmlFooter = `
-</main>
+    </main>
 </body>
 </html>
 `
@@ -42,12 +45,13 @@ generateHTMLElements = (employeeArray) => {
         if(role === 'Manager'){
             let office = employeeArray[i].officeNumber
             fs.appendFile(fileName, `
-            <div>${role}</div>,
-            <div>Name:${name}</div>, 
-            <div>Email:${email}</div>, 
-            <div>EmployessId: ${id}</div>, 
-            <div>Office Number:${office}</div>
-
+            <div class="card">
+                <h2>${role}</h2>
+                <p>Name: ${name}</p> 
+                <p>Email: <a href="mailto:${email}">${email}</a></p>
+                <p>Employee Id: ${id}</p>
+                <p>Office Number: ${office}</p>
+            </div>
 
             `, (err) =>
             err ? console.error(err) : console.log('Manager Card'));
@@ -56,11 +60,13 @@ generateHTMLElements = (employeeArray) => {
         }else if(role === 'Engineer'){
             let github = employeeArray[i].getGithub()
             fs.appendFile(fileName,`
-            <div>${role}</div>,
-            <div>Name:${name}</div>, 
-            <div>Email:${email}</div>, 
-            <div>EmployessId: ${id}</div>, 
-            <div>Github: http://github.com/${github}</div>
+            <div class="card">
+                <h2>${role}</h2>
+                <p>Name: ${name}</p> 
+                <p>Email: <a href="mailto:${email}">${email}</a></p>
+                <p>Employee Id: ${id}</p>
+                <a href="http://github.com/${github}">Github</a>
+            </div>
 
 
             `, (err) =>
@@ -70,21 +76,23 @@ generateHTMLElements = (employeeArray) => {
         }else if(role === 'Intern'){
             let school = employeeArray[i].getSchool()
             fs.appendFile(fileName, `
-            <div>${role}</div>,
-            <div>Name:${name}</div>, 
-            <div>Email:${email}</div>, 
-            <div>EmployessId: ${id}</div>, 
-            <div>School: ${school}</div>
+            <div class="card">
+                <h2>${role}</h2>
+                <p>Name:${name}</p> 
+                <p>Email:<a href="mailto:${email}">${email}</a></p>
+                <p>Employee Id: ${id}</p>
+                <p>School: ${school}</p>
+            </div>
             
             
             `, (err) =>
             err ? console.error(err) : console.log('Intern Card'));
-        }else{
-            return
         }
         
     }
-    addHTMLFooter();
+    setTimeout(()=>{
+        addHTMLFooter();
+    }, 1000)
 }
 
 module.exports = generateHTMLElements

@@ -1,0 +1,44 @@
+:root{
+    --clr-primary-500:hsl(50, 55%, 97%);
+    --clr-accent-500:hsl(300,10%,5%);
+    --clr-accent-300:hsl(300,20%,10%);
+
+}
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    background-color: var(--clr-accent-300);
+    color:var(--clr-primary-500)
+}
+a{
+    text-decoration: underline;
+    color: var(--clr-primary-500);
+}
+#heading-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+    background: var(--clr-accent-500);
+    color: var(--clr-primary-500);
+}
+main{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:1rem;
+}
+.card{
+    margin:1rem;
+    padding:2rem;
+
+    grid-column: span 1;
+    border-radius: 25px;
+    background-color: var(--clr-accent-500);
+
+    line-height: 2.5em;
+}
