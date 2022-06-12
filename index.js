@@ -1,30 +1,34 @@
 const inquirer = require('inquirer')
+const fs = require('fs');
 const Manager = require('./src/Manager')
 const Engineer = require('./src/Engineer')
 const Intern = require('./src/Intern')
-const employeeArray = require('./src/generateHTML')
+generateHTMLElements = require('./src/generateHTML')
+const employeeArray = [];
+
+
 
 createManager = () => {
     inquirer
     .prompt([
     {
         type: "input",
-        name: 'managerName',
+        name: 'name',
         message: 'Enter: Manager\'s Name'
     },
     {
         type: "input",
-        name: 'managerEmail',
+        name: 'email',
         message: 'Enter Manager\'s Email'
     },
     {
         type: "input",
-        name: 'managerId',
+        name: 'employeeId',
         message: 'Enter: Manager\'s Employee Number'
     },
     {
         type: "input",
-        name: 'managerOffice',
+        name: 'office',
         message: 'Enter Manager\'s Office Number'
     },
     {
@@ -34,12 +38,12 @@ createManager = () => {
 
     }
     ]).then(answers =>{
-        let manager = new Manager(answers.managerName,  answers.managerEmail, answers.managerId, answers.managerOffice)
+        let manager = new Manager(answers.name,  answers.email, answers.employeeId, answers.office)
         employeeArray.push(manager)
         if(answers.addMore){
             addMore()
         }else{
-            console.log(employeeArray);
+            generateHTMLElements(employeeArray);
 }
 }
 )}
@@ -67,22 +71,22 @@ createEngineer = () =>{
     inquirer.prompt([
         {
             type:"input",
-            name:"engineerName",
+            name:"name",
             message: "Enter: Engineer Name"
         },
         {
             type:"input",
-            name:"engineerEmail",
+            name:"email",
             message: "Enter: Engineer Email"
         },
         {
             type:"input",
-            name:"engineerId",
+            name:"employeeId",
             message: "Enter: Engineer Id"
         },
         {
             type:"input",
-            name:"engineerGithub",
+            name:"github",
             message: "Enter: Engineer Github"
         },
         {
@@ -92,13 +96,13 @@ createEngineer = () =>{
     
         }
         ]).then(answers =>{
-            let engineer = new Engineer(answers.engineerName, answers.engineerEmail, answers.engineerId,  answers.engineerGithub)
+            let engineer = new Engineer(answers.name, answers.email, answers.employeeId,  answers.github)
             employeeArray.push(engineer)
             
             if(answers.addMore){
                 addMore()
             }else{
-                console.log(employeeArray);
+                generateHTMLElements(employeeArray);
     }
     })
 }
@@ -107,22 +111,22 @@ createIntern = () =>{
     inquirer.prompt([
         {
             type:"input",
-            name:"internName",
+            name:"name",
             message: "Enter: Intern Name"
         },
         {
             type:"input",
-            name:"internEmail",
+            name:"email",
             message: "Enter: Intern Email"
         },
         {
             type:"input",
-            name:"internId",
+            name:"employeeId",
             message: "Enter: Intern Id"
         },
         {
             type:"input",
-            name:"internSchool",
+            name:"school",
             message: "Enter: Intern School"
         },
         {
@@ -132,15 +136,17 @@ createIntern = () =>{
     
         }
         ]).then(answers =>{
-            let intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool)
+            let intern = new Intern(answers.name, answers.email, answers.employeeId, answers.school)
             employeeArray.push(intern)
             if(answers.addMore){
                 addMore()
             }else{
-                console.log(employeeArray);
+                generateHTMLElements(employeeArray);
             }
     })
 }
+
+
 
 onInit = () =>{
     createManager()
