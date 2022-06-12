@@ -1,5 +1,6 @@
 const fs = require('fs');
 
+
 const fileName = './dist/index.html'
 const htmlHeader = `
 <!DOCTYPE html>
@@ -12,10 +13,21 @@ const htmlHeader = `
     <title>Team Contacts</title>
 </head>
 <body>
+    <main>
+`
+
+const htmlFooter = `
+</main>
+</body>
+</html>
 `
 createHTMLFile = () =>{
     fs.appendFile(fileName, htmlHeader, (err) =>
     err ? console.error(err) : console.log('Created Html'))
+}
+addHTMLFooter = () =>{
+    fs.appendFile(fileName, htmlFooter, (err) =>
+            err ? console.error(err) : console.log('FooterCreated'));
 }
 
 generateHTMLElements = (employeeArray) => {
@@ -25,35 +37,54 @@ generateHTMLElements = (employeeArray) => {
         let name = employeeArray[i].getName()
         let email = employeeArray[i].getEmail()
         let id = employeeArray[i].getId()
+
+
         if(role === 'Manager'){
             let office = employeeArray[i].officeNumber
-            console.log(`
-            ${role},
-            Name:${name}, 
-            Email:${email}, 
-            EmployessId: ${id}, 
-            Office Number:${office}`);
+            fs.appendFile(fileName, `
+            <div>${role}</div>,
+            <div>Name:${name}</div>, 
+            <div>Email:${email}</div>, 
+            <div>EmployessId: ${id}</div>, 
+            <div>Office Number:${office}</div>
+
+
+            `, (err) =>
+            err ? console.error(err) : console.log('Manager Card'));
+
+
         }else if(role === 'Engineer'){
             let github = employeeArray[i].getGithub()
-            console.log(`
-            ${role},
-            Name:${name}, 
-            Email:${email}, 
-            EmployessId: ${id}, 
-            Github: http://github.com/${github}`);
+            fs.appendFile(fileName,`
+            <div>${role}</div>,
+            <div>Name:${name}</div>, 
+            <div>Email:${email}</div>, 
+            <div>EmployessId: ${id}</div>, 
+            <div>Github: http://github.com/${github}</div>
+
+
+            `, (err) =>
+            err ? console.error(err) : console.log('Engineer Card'));
+
+
         }else if(role === 'Intern'){
             let school = employeeArray[i].getSchool()
-            console.log(`
-            ${role},
-            Name:${name}, 
-            Email:${email}, 
-            EmployessId: ${id}, 
-            School: ${school}`);
+            fs.appendFile(fileName, `
+            <div>${role}</div>,
+            <div>Name:${name}</div>, 
+            <div>Email:${email}</div>, 
+            <div>EmployessId: ${id}</div>, 
+            <div>School: ${school}</div>
+            
+            
+            `, (err) =>
+            err ? console.error(err) : console.log('Intern Card'));
         }else{
             return
         }
         
     }
+    addHTMLFooter();
 }
 
 module.exports = generateHTMLElements
