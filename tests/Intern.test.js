@@ -13,5 +13,45 @@ describe('Intern', () =>{
             expect(obj.employeeId).toEqual(employeeId)
             expect(obj.school).toEqual(school)
         })
+        it('getName method check', () =>{
+            const name = 'James';
+            const email = 'james@test.com'
+            const employeeId = '123'
+            const school = 'UofT'
+            const obj = new Intern(name, email, employeeId, school)
+            expect(obj.getName()).toEqual(name) 
+        })
+        it('getEmail method check', () =>{
+            const name = 'James';
+            const email = 'james@test.com'
+            const employeeId = '123'
+            const school = 'UofT'
+            const obj = new Intern(name, email, employeeId, school)
+            expect(obj.getEmail()).toEqual(email) 
+        })
+        it('getId method check', () =>{
+            const name = 'James';
+            const email = 'james@test.com'
+            const employeeId = '123'
+            const school = 'UofT'
+            const obj = new Intern(name, email, employeeId, school)
+            expect(obj.getId()).toEqual(employeeId) 
+        })
+        it('getRole method check', () =>{
+            const name = 'James';
+            const email = 'james@test.com'
+            const employeeId = '123'
+            const school = 'UofT'
+            const obj = new Intern(name, email, employeeId, school)
+            expect(obj.getRole()).toEqual('Intern') 
+        })
+        it('getSchool method check', () =>{
+            const name = 'James';
+            const email = 'james@test.com'
+            const employeeId = '123'
+            const school = 'UofT'
+            const obj = new Intern(name, email, employeeId, school)
+            expect(obj.getSchool()).toEqual(school) 
+        })
     })
 })
