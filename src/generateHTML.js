@@ -16,7 +16,7 @@ const htmlHeader = `
     <title>Team Members</title>
 </head>
 <header>
-    <h1 id='heading-title'>Team Roster</h1>
+    <h1 id='heading-title'>Team Members</h1>
 </header>
 <body>
     <main>
@@ -50,9 +50,9 @@ generateHTMLElements = (employeeArray) => {
             fs.appendFile(fileName, `
             <div class="card" id="manager-card">
                 <h2>${name}</h2> 
-                <p>${role}</p>
+                <h3>${role}</h3>
                 <a href="mailto:${email}">${email}</a>
-                <p>id#: ${id}</p>
+                <p id="employeeId">id#${id}</p>
                 <p>Office Number: ${office}</p>
             </div>
 
@@ -65,9 +65,9 @@ generateHTMLElements = (employeeArray) => {
             fs.appendFile(fileName,`
             <div class="card" id="engineer-card">
                 <h2>${name}</h2> 
-                <p>${role}</p>
+                <h3>${role}</h3>
                 <a href="mailto:${email}">${email}</a>
-                <p>id#: ${id}</p>
+                <p id="employeeId">id#${id}</p>
                 <a href="http://github.com/${github}" target="_blank">github.com/${github}</a>
             </div>
 
@@ -81,9 +81,9 @@ generateHTMLElements = (employeeArray) => {
             fs.appendFile(fileName, `
             <div class="card" id="intern-card">
                 <h2>${name}</h2> 
-                <p>${role}</p>
+                <h3>${role}</h3>
                 <a href="mailto:${email}">${email}</a>
-                <p>id#: ${id}</p>
+                <p id="employeeId">id#${id}</p>
                 <p>School: ${school}</p>
             </div>
             
