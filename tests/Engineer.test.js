@@ -1,7 +1,7 @@
 const Engineer = require('../src/Engineer')
 
-describe('Engineer', () =>{
-    describe('Engineer class', () =>{
+describe('Engineer Class', () =>{
+    describe('Engineer Creation', () =>{
         it('should create new object with name, email, id, and github', () =>{
             const name = 'James';
             const email = 'james@test.com'
@@ -12,7 +12,8 @@ describe('Engineer', () =>{
             expect(obj.email).toEqual(email)
             expect(obj.employeeId).toEqual(employeeId)
             expect(obj.github).toEqual(github)
-        })
+        })})
+        describe('Engineer Method Checks', () =>{
         it('getName method check', () =>{
             const name = 'James';
             const email = 'james@test.com'
@@ -53,6 +54,5 @@ describe('Engineer', () =>{
             const obj = new Engineer(name, email, employeeId, github)
             expect(obj.getGithub()).toEqual(github) 
         })
-
     })
 })

@@ -1,42 +1,11 @@
 const fs = require('fs');
-
-
-const fileName = './dist/index.html'
 const teamArray = [];
+
+
 createHTMLFile = (data) =>{
     fs.appendFile('./dist/index.html', data, (err) =>
     err ? console.error(err) : console.log('Created Html'))
 }
-// const htmlHeader = `
-// <!DOCTYPE html>
-// <html lang="en">
-// <head>
-//     <meta charset="UTF-8">
-//     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-//     <link rel="preconnect" href="https://fonts.googleapis.com">
-//     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-//     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Source+Code+Pro:wght@300&display=swap" rel="stylesheet">
-//     <link rel="stylesheet" href="style.css">
-//     <title>Team Members</title>
-// </head>
-// <header>
-//     <h1 id='heading-title'>Team Members</h1>
-// </header>
-// <body>
-//     <main>
-// `
-
-// const htmlFooter = `
-//     </main>
-// </body>
-// </html>
-// `
-// 
-// addHTMLFooter = () =>{
-//     fs.appendFile(fileName, htmlFooter, (err) =>
-//             err ? console.error(err) : console.log('Footer Created'));
-// }
 
 generateHTMLElements = (employeeArray) => {
     for (let i = 0; i < employeeArray.length; i++) {
@@ -94,7 +63,8 @@ generateHTMLElements = (employeeArray) => {
         }
         
     }
-createHTMLFile(`<!DOCTYPE html>
+createHTMLFile(`
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">

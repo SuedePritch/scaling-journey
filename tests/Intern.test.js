@@ -1,7 +1,7 @@
 const Intern = require('../src/Intern')
 
-describe('Intern', () =>{
-    describe('Intern class', () =>{
+describe('Intern Class', () =>{
+    describe('Intern Creation', () =>{
         it('should create new object with name, email, id, and school', () =>{
             const name = 'James';
             const email = 'james@test.com'
@@ -12,7 +12,8 @@ describe('Intern', () =>{
             expect(obj.email).toEqual(email)
             expect(obj.employeeId).toEqual(employeeId)
             expect(obj.school).toEqual(school)
-        })
+        })})
+        describe('Intern Method Checks', () =>{
         it('getName method check', () =>{
             const name = 'James';
             const email = 'james@test.com'
