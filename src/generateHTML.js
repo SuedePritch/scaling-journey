@@ -1,11 +1,26 @@
+//import packages
+
 const fs = require('fs');
+
+//empty array that will contain the html version of employee array
+
 const teamArray = [];
 
+//creates index.html file in the dist folder
+//writes html generated with createHTMLFile()
+//logs error or success
 
 createHTMLFile = (data) =>{
     fs.appendFile('./dist/index.html', data, (err) =>
     err ? console.error(err) : console.log('Created Html'))
 }
+
+//this converts the classes stored in employeeArray into html cards
+//selects values from classes
+//applies html card template based on role(a.k.a constructor name)
+//pushes manager and intern cards to teamArray
+//engineers are unshift to the front of the teamArray
+//manager index varies and is forced into the top postion in the display using css grid-column-start
 
 generateHTMLElements = (employeeArray) => {
     for (let i = 0; i < employeeArray.length; i++) {
@@ -13,7 +28,6 @@ generateHTMLElements = (employeeArray) => {
         let name = employeeArray[i].getName()
         let email = employeeArray[i].getEmail()
         let id = employeeArray[i].getId()
-
 
         if(role === 'Manager'){
             let office = employeeArray[i].officeNumber
@@ -25,9 +39,7 @@ generateHTMLElements = (employeeArray) => {
                 <p class="bottomleft">Office: ${office}</p>
                 <p id="employeeId">id#${id}</p>
             </div>
-
             `);
-
 
         }else if(role === 'Engineer'){
             let github = employeeArray[i].getGithub()
@@ -42,10 +54,7 @@ generateHTMLElements = (employeeArray) => {
                 </a>
                 <p id="employeeId">id#${id}</p>
             </div>
-
-
             `);
-
 
         }else if(role === 'Intern'){
             let school = employeeArray[i].getSchool()
@@ -57,12 +66,19 @@ generateHTMLElements = (employeeArray) => {
                 <p  class="bottomleft">School: ${school}</p>
                 <p id="employeeId">id#${id}</p>
             </div>
-            
-            
             `);
         }
         
     }
+
+
+
+//boilerplate html 
+//imports fonts and links styles.css
+//title and heading
+//embeds teamArray html cards
+//join to remove commas
+
 createHTMLFile(`
 <!DOCTYPE html>
 <html lang="en">
@@ -86,5 +102,7 @@ createHTMLFile(`
 </body>
 </html>`);
 }
+
+
 
 module.exports = generateHTMLElements

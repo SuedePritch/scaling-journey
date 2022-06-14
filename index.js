@@ -1,13 +1,23 @@
+//import packages
 const inquirer = require('inquirer')
-const fs = require('fs');
-const Manager = require('./src/Manager')
-const Engineer = require('./src/Engineer')
-const Intern = require('./src/Intern')
+
+//import classes
+const Manager = require('./lib/Manager')
+const Engineer = require('./lib/Engineer')
+const Intern = require('./lib/Intern')
+
+//import generateHTML handles html creation and card generation using employeeArray
 generateHTMLElements = require('./src/generateHTML')
 const employeeArray = [];
 
 
-
+//The initial questions are manager details
+//Can only be one manager
+//Creates manager
+//Pushes new manager to employee array
+//Asks if you want to add more employees
+//if yes then shows choice for employee class in addMore()
+//if finished it generates html 
 createManager = () => {
     inquirer
     .prompt([
@@ -48,25 +58,12 @@ createManager = () => {
 }
 )}
 
-addMore = ()=>{
-    inquirer.prompt([
-        {
-            type:"list",
-            name:"role",
-            message: "What role does this employee have?",
-            choices: ['Engineer', 'Intern']
-        }
-    ]).then(answers =>{
-        if(answers.role === 'Engineer'){
-            createEngineer()
-        }else if(answers.role === 'Intern'){
-            createIntern()
-        }else{
-            return
-        }
-    }
-)}
-
+//engineer questions
+//creates engineer
+//pushes new engineer to employee array
+//Asks if you want to add more employees
+//if yes then shows choice for employee class in addMore()
+//if finished it generates html 
 createEngineer = () =>{
     inquirer.prompt([
         {
@@ -107,6 +104,12 @@ createEngineer = () =>{
     })
 }
 
+//intern questions
+//creates intern
+//pushes new intern to employee array
+//Asks if you want to add more employees
+//if yes then shows choice for employee class in addMore()
+//if finished it generates html 
 createIntern = () =>{
     inquirer.prompt([
         {
@@ -146,9 +149,29 @@ createIntern = () =>{
     })
 }
 
+//this handles the choice between engineer and intern
+addMore = ()=>{
+    inquirer.prompt([
+        {
+            type:"list",
+            name:"role",
+            message: "What role does this employee have?",
+            choices: ['Engineer', 'Intern']
+        }
+    ]).then(answers =>{
+        if(answers.role === 'Engineer'){
+            createEngineer()
+        }else if(answers.role === 'Intern'){
+            createIntern()
+        }else{
+            return
+        }
+    }
+)}
 
 
 onInit = () =>{
+    //starts inquirer questions
     createManager()
 }
 
